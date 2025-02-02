@@ -1,10 +1,10 @@
 import requests 
 import date
 
-today = date.get_current_date()
 
 def get_game_id():
 
+    today = date.get_current_date()
     # print(today)
     #today = "2024-10-13" # a testing date
 
@@ -28,3 +28,4 @@ def get_game_id():
 
         return gameId
         #print(gameId)
+
