@@ -1,15 +1,18 @@
 
 
-<div align="margin-auto">
+
 
 # ⚾ Baseball Strategy Assistant
 
-![Baseball Strategy Assistant](https://img.shields.io/badge/Status-In%20Development-yellow)  
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
-[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)  
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.28.0-blue)](https://streamlit.io/)  
-[![MLB API](https://img.shields.io/badge/MLB%20API-1.1-blue)](https://statsapi.mlb.com/)  
-[![Gemini API](https://img.shields.io/badge/Gemini%20API-1.0-blue)](https://ai.google.dev/)  
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-In%20Development-yellow">
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg">
+  <img src="https://img.shields.io/badge/Python-3.9%2B-blue">
+  <img src="https://img.shields.io/badge/Streamlit-1.28.0-blue">
+  <img src="https://img.shields.io/badge/MLB%20API-1.1-blue">
+  <img src="https://img.shields.io/badge/Gemini%20API-1.0-blue">
+</p>
+ 
 
 *An AI-powered tool that explains baseball pitch strategies in real-time using MLB data and Google's Gemini API.*
 
@@ -19,7 +22,6 @@
 [Project Structure](#-project-structure) •
 [Contributing](#-contributing)
 
-</div>
 
 ---
 
