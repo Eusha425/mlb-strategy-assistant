@@ -22,8 +22,9 @@
 [Project Structure](#-project-structure) •
 [Contributing](#-contributing)
 
-</div>
+
 ---
+</div>
 
 ## 📋 Overview
 
