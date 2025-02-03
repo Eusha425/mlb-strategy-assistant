@@ -1,75 +1,27 @@
-import google.generativeai as genai
-import os
-from datetime import datetime
-import requests
+import mlb_client
+import gemini_client
 
-# Configure API key 
-key = "AIzaSyCsuoQYxrzc8s4FQGkOuWMdIBowynJX1pA"  # Hardcoded for testing (remove later)
-genai.configure(api_key=key)
-model = genai.GenerativeModel('gemini-pro')
+data = mlb_client.get_game_data()
 
-def get_live_game_id():
-    """Fetch today's MLB game ID."""
-    today = datetime.today().strftime('%Y-%m-%d')
-    try:
-        schedule = requests.get(
-            f"https://statsapi.mlb.com/api/v1/schedule?date={today}",
-            timeout=5
-        ).json()
-        if schedule.get("dates"):
-            return schedule["dates"][0]["games"][0]["gamePk"], "demo"  # First game of day
-        return None, None
-    except Exception as e:
-        print(f"Schedule error: {str(e)}")
-        return None, None
-
-def generate_insight(pitch_type, count, runners):
-    """Generate pitch explanation."""
-    prompt = f"""Explain this baseball pitch to a casual fan:
-- Count: {count}
-- Runners: {runners}
-- Pitch type: {pitch_type}
-Use 1 fun sentence!"""
-    try:
-        return model.generate_content(prompt).text
-    except Exception as e:
-        return f"Insight error: {str(e)}"
-
-def main():
-    game_id, status = get_live_game_id()
-    game_id = game_id or "716757"  # Fallback to test ID if needed
-    
-    try:
-        game_data = requests.get(
-            f"https://statsapi.mlb.com/api/v1.1/game/{game_id}/feed/live"
-        ).json()
+if data == 0:
+    print("No Game for the current date")
+else:
+    # Ensure data has the required keys before accessing them
+    if "liveData" in data and "plays" in data["liveData"] and "currentPlay" in data["liveData"]["plays"]:
+        latest_pitch = data["liveData"]["plays"]["currentPlay"]["playEvents"][-1]
+        pitch_type = latest_pitch["details"]["type"]["description"]
+        balls = data["liveData"]["linescore"]["balls"]
+        strikes = data["liveData"]["linescore"]["strikes"]
+        count = f"{balls}-{strikes}"
         
-        # CORRECTED: Get linescore from liveData (not plays)
-        linescore = game_data.get("liveData", {}).get("linescore", {})
-        if not linescore:
-            print("No linescore data available")
-            return
+        # Check if offense situation exists before accessing it
+        runners = data["liveData"]["linescore"]["offense"].get("situation", {}).get("description", "No runners on base")
 
-        # Get count from linescore
-        count = f"{linescore.get('balls', 0)}-{linescore.get('strikes', 0)}"
+        response = gemini_client.generate_insight(count, runners, pitch_type)
+
+        print(response)
         
-        # Get latest pitch data
-        plays = game_data.get("liveData", {}).get("plays", {})
-        if plays.get("currentPlay"):
-            latest_pitch = plays["currentPlay"]["playEvents"][-1]
-            pitch_type = latest_pitch["details"]["type"]["description"]
-        else:
-            pitch_type = "Unknown pitch"
+    else:
+        print("Error: Game data missing required fields")
 
-        # Get runners
-        offense = linescore.get("offense", {})
-        runners = offense.get("situation", {}).get("description", "no runners")
 
-        print("\n⚾ Live Analysis:")
-        print(generate_insight(pitch_type, count, runners))
-        
-    except Exception as e:
-        print(f"Fatal error: {str(e)}")
-
-if __name__ == "__main__":
-    main()
