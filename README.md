@@ -1,5 +1,5 @@
 
-
+<div align="center">
 
 
 # ⚾ Baseball Strategy Assistant
@@ -22,7 +22,7 @@
 [Project Structure](#-project-structure) •
 [Contributing](#-contributing)
 
-
+</div>
 ---
 
 ## 📋 Overview
