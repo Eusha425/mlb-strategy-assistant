@@ -1,6 +1,6 @@
 
 
-<div align="center">
+<div align="margin-auto">
 
 # ⚾ Baseball Strategy Assistant
 
