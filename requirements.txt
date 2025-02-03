@@ -1,0 +1,10 @@
+# Core Dependencies
+streamlit==1.28.0              # For the web app interface
+google-generativeai==0.3.0     # For Gemini API integration
+requests==2.31.0               # For MLB API calls
+python-dotenv==1.0.0           # For loading environment variables
+
+# Development Dependencies (Optional)
+black==23.9.1                  # Code formatter
+pylint==2.17.5                 # Linter for code quality
+pytest==7.4.0                  # Testing framework
