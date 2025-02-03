@@ -6,7 +6,7 @@ def get_game_id():
 
     today = date.get_current_date()
     # print(today)
-    #today = "2024-10-13" # a testing date
+    #today = "2020-10-13" # a testing date
 
     # retrieve the request from mlb api in json format
     response = requests.get(f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={today}").json()
