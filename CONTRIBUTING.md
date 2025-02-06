@@ -1,6 +1,6 @@
 
 
-```markdown
+
 # Contributing to Baseball Strategy Assistant
 
 Thank you for your interest in contributing to the Baseball Strategy Assistant! We welcome contributions from everyone, whether you're fixing bugs, improving documentation, or proposing new features. Please take a moment to review this guide to ensure a smooth and enjoyable contribution process.
