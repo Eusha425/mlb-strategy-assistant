@@ -3,7 +3,7 @@
 
 # Contributing to Baseball Strategy Assistant
 
-Thank you for your interest in contributing to the Baseball Strategy Assistant! We welcome contributions from everyone, whether you're fixing bugs, improving documentation, or proposing new features. Please take a moment to review this guide to ensure a smooth and enjoyable contribution process.
+Thank you for your interest in contributing to the Baseball Strategy Assistant! Contributions are welcome from everyone, whether you're fixing bugs, improving documentation, or proposing new features. Please take a moment to review this guide to ensure a smooth and enjoyable contribution process.
 
 ---
 
@@ -45,7 +45,7 @@ Want to contribute code? Follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/baseball-strategy-assistant.git
+   git clone https://github.com/Eusha425/baseball-strategy-assistant.git
    cd baseball-strategy-assistant
    ```
 
@@ -85,7 +85,7 @@ Before submitting a PR, ensure your changes pass all tests:
 
 ## 🙌 Thank You!
 
-Your contributions help make this project better for everyone. I appreciate your time and effort!
+Your contributions help make this project better for everyone.
 
 ---
 
