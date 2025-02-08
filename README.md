@@ -130,8 +130,6 @@ We welcome contributions! Here’s how you can help:
 2. **Suggest Features**: Share your ideas for new features or improvements.  
 3. **Submit Pull Requests**: Follow our [Contributing Guidelines](CONTRIBUTING.md).  
 
-Please adhere to our [Code of Conduct](CONTRIBUTING.md#code-of-conduct).
-
 ---
 
 ## 📜 License
