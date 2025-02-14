@@ -11,22 +11,15 @@ key = GEMINI_API_KEY
 genai.configure(api_key=key)
 model = genai.GenerativeModel('gemini-pro')
 
-def generate_insight(count, runners, pitch_type):
-    prompt = f"""You are a fun baseball commentator explaining strategy to a first-time fan. 
+def generate_insight(count, runners, pitch_type, extra_context=""):
+    prompt = f"""You are a fun baseball commentator explaining strategy to a first-time fan.
 
 **Situation**:
 - Count: {count}
 - Runners: {runners}
 - Pitch thrown: {pitch_type}
+{extra_context}
 
 **Task**:
-Explain why this pitch was chosen in 1 short sentence. Use a creative analogy from everyday life (e.g., pizza, video games, weather). 
-
-**Rules**:
-- No technical terms like "spin rate", "exit velocity", or "WHIP".
-- Focus on the pitcher's goal (e.g., strikeout, ground ball).
-- Make it relatable and fun!
-
-Example: "The pitcher threw a curveball here — like a rollercoaster suddenly dropping, it fools the batter into swinging too early!"""
-
+Explain why this pitch was chosen in 1 short sentence using a creative analogy from everyday life (e.g., pizza, video games, weather)."""
     return model.generate_content(prompt).text

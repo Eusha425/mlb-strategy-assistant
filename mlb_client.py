@@ -6,7 +6,7 @@ def get_game_id():
 
     today = date.get_current_date()
     # print(today)
-    # today = "2020-10-13" # a testing date
+    #today = "2021-08-08" # a testing date
 
     # retrieve the request from mlb api in json format
     response = requests.get(f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={today}").json()
@@ -30,14 +30,29 @@ def get_game_id():
         #print(gameId)
 
 def get_game_data():
-
-    id = get_game_id()
-    if id == 0:
+    game_id = get_game_id()
+    if game_id == 0:
         return 0
     else:
-        # retrieve the gameplay data for the given id
-        game_data = requests.get(f"https://statsapi.mlb.com/api/v1.1/game/{id}/feed/live").json()
-
-        #print(game_data)
-
+        # Retrieve detailed live game data
+        game_data = requests.get(f"https://statsapi.mlb.com/api/v1.1/game/{game_id}/feed/live").json()
+        # print(game_data)
+        
+        # Try to extract additional info such as inning and score
+        try:
+            linescore = game_data["liveData"]["linescore"]
+            inning = linescore.get("currentInning", "N/A")
+            home_score = linescore["teams"]["home"]["runs"]
+            away_score = linescore["teams"]["away"]["runs"]
+        except Exception:
+            inning = "N/A"
+            home_score = 0
+            away_score = 0
+        
+        # Store additional game info in a dedicated key
+        game_data["game_info"] = {
+            "inning": inning,
+            "home_score": home_score,
+            "away_score": away_score
+        }
         return game_data
