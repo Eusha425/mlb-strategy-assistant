@@ -28,7 +28,7 @@
 
 ## 📋 Overview
 
-The **Baseball Strategy Assistant** is a real-time AI tool that analyzes MLB game data and provides casual fans with fun, easy-to-understand explanations of pitch strategies. Built with Python, Streamlit, and Google's Gemini API, it transforms complex baseball tactics into relatable analogies.
+The **Baseball Strategy Assistant** is a real-time AI tool that analyses MLB game data and provides casual fans with fun, easy-to-understand explanations of pitch strategies. Built with Python, Streamlit, and Google's Gemini API, it transforms complex baseball tactics into relatable analogies.
 
 ---
 
